@@ -32,7 +32,7 @@ function setup_H() {
 
     let numClicks = 0; // for number of clicks
     // let aniRef = null;
-    let circles = []; //empty array of circles
+    let circles = []; // empty array of circles
     // let aniSpeed = 1;
 
     //call to setup the animation before running

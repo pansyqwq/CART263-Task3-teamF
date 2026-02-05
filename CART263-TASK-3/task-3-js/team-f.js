@@ -1,7 +1,7 @@
 //Ziyan Pan: D
 //Ben: A
 //Weini: C
-//xueyi: B
+//Xueyi: B
 
 
 
@@ -31,6 +31,13 @@ function setup_F() {
    
   function aniA(parentCanvas) {
     console.log("in ani-A -teamF");
+
+    let button = document.createElement("div");
+    button.classList.add("TEAM_H_box");
+    button.textContent = "CLICK";
+    parentCanvas.appendChild(button);
+
+    let squares = [];
   }
 
 
