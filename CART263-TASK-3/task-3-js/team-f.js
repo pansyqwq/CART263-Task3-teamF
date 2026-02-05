@@ -112,9 +112,6 @@ function setup_F() {
       console.log("in ani-D -teamF");
     }
 
-    function aniD(parentCanvas) {
-    console.log("in aniD -teamH");
-
     let sampleColors = [
       "red",
       "purple",
@@ -182,6 +179,6 @@ function setup_F() {
       requestAnimationFrame(animate);
     }
   }
-}
+
 
 
