@@ -112,4 +112,76 @@ function setup_F() {
       console.log("in ani-D -teamF");
     }
 
+    function aniD(parentCanvas) {
+    console.log("in aniD -teamH");
+
+    let sampleColors = [
+      "red",
+      "purple",
+      "orange",
+      "magenta",
+      "black",
+      "green",
+      "yellow",
+      "pink",
+      "lime",
+      "maroon",
+      "teal",
+      "navy",
+      "olive",
+      "grey",
+      "fuchsia",
+    ];
+
+    //get the rendered bounding Box of parent and use the width and height
+    let boundingBoxParent = parentCanvas.getBoundingClientRect();
+    let arrayOfellipses = [];
+
+    //make a grid of cells
+    for (let i = 20; i < boundingBoxParent.width; i += 20) {
+      for (let j = 20; j < boundingBoxParent.height; j += 20) {
+        //create a div and place in the grid
+        let ellipse = document.createElement("div");
+        ellipse.classList.add("TEAM_H_h_cell_D");
+        parentCanvas.appendChild(ellipse);
+        ellipse.style.left = `${j}px`;
+        ellipse.style.top = `${i}px`;
+        ellipse.style.width = "10px";
+        ellipse.style.height = "10px";
+        ellipse.style.opacity = 1;
+        ellipse.style.background =
+          sampleColors[parseInt(Math.random() * sampleColors.length)];
+        ellipse.setAttribute("ani-dir", "1");
+        ellipse.setAttribute("ani-go", "false");
+        arrayOfellipses.push(ellipse);
+        setTimeout(function(){ellipse.setAttribute("ani-go","true")},Math.random()*5000)
+      }
+    }
+
+  requestAnimationFrame(animate)
+
+
+    /****** callback for requestAnimationFrame **********/
+    function animate() {
+      for (let i = 0; i < arrayOfellipses.length; i++) {
+        if (arrayOfellipses[i].getAttribute("ani-go") === "true") {
+          let dir_of_ani = parseInt(arrayOfellipses[i].getAttribute("ani-dir"));
+          let currentSize = parseInt(arrayOfellipses[i].style.width);
+          //console.log(currentSize)
+          if (currentSize > 25 || currentSize < 2) {
+            dir_of_ani *= -1;
+            arrayOfellipses[i].setAttribute("ani-dir", dir_of_ani);
+          }
+          arrayOfellipses[i].style.width = currentSize + 1 * dir_of_ani + "px";
+          arrayOfellipses[i].style.height = currentSize + 1 * dir_of_ani + "px";
+          arrayOfellipses[i].style.borderRadius =
+            currentSize + 1 * dir_of_ani + "px";
+        }
+      }
+      //recall animation loop
+      requestAnimationFrame(animate);
+    }
+  }
 }
+
+
