@@ -11,7 +11,7 @@ function setup_F() {
   console.log("in f");
   /**************************************************** */
   //get the buttons
-  activateButtons(`#TEAM_F`, "ani_canvF",aniA,aniB,aniC,aniD);
+  activateButtons(`#TEAM_F`, "ani_canvF", aniA, aniB, aniC, aniD);
 
   /**************** ANI A ************************************ */
   /** PUT ALL YOUR CODE FOR INTERACTIVE PATTERN A INSIDE HERE */
@@ -28,7 +28,7 @@ function setup_F() {
    * remember you can define other functions inside....
    * Do not change any code above or the HTML markup.
    * **/
-   
+
   function aniA(parentCanvas) {
     console.log("in ani-A -teamF");
 
@@ -58,9 +58,25 @@ function setup_F() {
    * **/
 
   function aniB(parentCanvas) {
-      console.log("in ani-B -teamF");
-    
+    console.log("in ani-B -teamF");
+
   }
+  window.onload = function () {
+    let drawBox = document.querySelector("#draw-box-a");
+
+    drawBox.addEventListener("click", clickCallBack);
+
+    function clickCallBack(e) {
+      let rect = this.getBoundingClientRect();
+
+      let offsetX = e.clientX - rect.x;
+      let offsetY = e.clientY - rect.y;
+
+
+
+    }
+  }
+
   /****************ANI C ************************************ */
   /** PUT ALL YOUR CODE FOR INTERACTIVE PATTERN C INSIDE HERE */
   /****************ANI C************************************ */
@@ -82,7 +98,7 @@ function setup_F() {
    */
 
   function aniC(parentCanvas) {
-      console.log("in ani-C -teamF");
+    console.log("in ani-C -teamF");
 
     /*** THIS IS THE CALLBACK FOR KEY DOWN (* DO NOT CHANGE THE NAME *..) */
     windowKeyDownRef = function (e) {
@@ -115,77 +131,77 @@ function setup_F() {
    * remember you can define other functions inside....
    * Do not change any code above or the HTML markup.
    * **/
-    function aniD(parentCanvas) {
-      console.log("in ani-D -teamF");
+  function aniD(parentCanvas) {
+    console.log("in ani-D -teamF");
+  }
+
+  let sampleColors = [
+    "red",
+    "purple",
+    "orange",
+    "magenta",
+    "black",
+    "green",
+    "yellow",
+    "pink",
+    "lime",
+    "maroon",
+    "teal",
+    "navy",
+    "olive",
+    "grey",
+    "fuchsia",
+  ];
+
+  //get the rendered bounding Box of parent and use the width and height
+  let boundingBoxParent = parentCanvas.getBoundingClientRect();
+  let arrayOfellipses = [];
+
+  //make a grid of cells
+  for (let i = 20; i < boundingBoxParent.width; i += 20) {
+    for (let j = 20; j < boundingBoxParent.height; j += 20) {
+      //create a div and place in the grid
+      let ellipse = document.createElement("div");
+      ellipse.classList.add("TEAM_H_h_cell_D");
+      parentCanvas.appendChild(ellipse);
+      ellipse.style.left = `${j}px`;
+      ellipse.style.top = `${i}px`;
+      ellipse.style.width = "10px";
+      ellipse.style.height = "10px";
+      ellipse.style.opacity = 1;
+      ellipse.style.background =
+        sampleColors[parseInt(Math.random() * sampleColors.length)];
+      ellipse.setAttribute("ani-dir", "1");
+      ellipse.setAttribute("ani-go", "false");
+      arrayOfellipses.push(ellipse);
+      setTimeout(function () { ellipse.setAttribute("ani-go", "true") }, Math.random() * 5000)
     }
-
-    let sampleColors = [
-      "red",
-      "purple",
-      "orange",
-      "magenta",
-      "black",
-      "green",
-      "yellow",
-      "pink",
-      "lime",
-      "maroon",
-      "teal",
-      "navy",
-      "olive",
-      "grey",
-      "fuchsia",
-    ];
-
-    //get the rendered bounding Box of parent and use the width and height
-    let boundingBoxParent = parentCanvas.getBoundingClientRect();
-    let arrayOfellipses = [];
-
-    //make a grid of cells
-    for (let i = 20; i < boundingBoxParent.width; i += 20) {
-      for (let j = 20; j < boundingBoxParent.height; j += 20) {
-        //create a div and place in the grid
-        let ellipse = document.createElement("div");
-        ellipse.classList.add("TEAM_H_h_cell_D");
-        parentCanvas.appendChild(ellipse);
-        ellipse.style.left = `${j}px`;
-        ellipse.style.top = `${i}px`;
-        ellipse.style.width = "10px";
-        ellipse.style.height = "10px";
-        ellipse.style.opacity = 1;
-        ellipse.style.background =
-          sampleColors[parseInt(Math.random() * sampleColors.length)];
-        ellipse.setAttribute("ani-dir", "1");
-        ellipse.setAttribute("ani-go", "false");
-        arrayOfellipses.push(ellipse);
-        setTimeout(function(){ellipse.setAttribute("ani-go","true")},Math.random()*5000)
-      }
-    }
+  }
 
   requestAnimationFrame(animate)
 
 
-    /****** callback for requestAnimationFrame **********/
-    function animate() {
-      for (let i = 0; i < arrayOfellipses.length; i++) {
-        if (arrayOfellipses[i].getAttribute("ani-go") === "true") {
-          let dir_of_ani = parseInt(arrayOfellipses[i].getAttribute("ani-dir"));
-          let currentSize = parseInt(arrayOfellipses[i].style.width);
-          //console.log(currentSize)
-          if (currentSize > 25 || currentSize < 2) {
-            dir_of_ani *= -1;
-            arrayOfellipses[i].setAttribute("ani-dir", dir_of_ani);
-          }
-          arrayOfellipses[i].style.width = currentSize + 1 * dir_of_ani + "px";
-          arrayOfellipses[i].style.height = currentSize + 1 * dir_of_ani + "px";
-          arrayOfellipses[i].style.borderRadius =
-            currentSize + 1 * dir_of_ani + "px";
+  /****** callback for requestAnimationFrame **********/
+  function animate() {
+    for (let i = 0; i < arrayOfellipses.length; i++) {
+      if (arrayOfellipses[i].getAttribute("ani-go") === "true") {
+        let dir_of_ani = parseInt(arrayOfellipses[i].getAttribute("ani-dir"));
+        let currentSize = parseInt(arrayOfellipses[i].style.width);
+        //console.log(currentSize)
+        if (currentSize > 25 || currentSize < 2) {
+          dir_of_ani *= -1;
+          arrayOfellipses[i].setAttribute("ani-dir", dir_of_ani);
         }
+        arrayOfellipses[i].style.width = currentSize + 1 * dir_of_ani + "px";
+        arrayOfellipses[i].style.height = currentSize + 1 * dir_of_ani + "px";
+        arrayOfellipses[i].style.borderRadius =
+          currentSize + 1 * dir_of_ani + "px";
       }
-      //recall animation loop
-      requestAnimationFrame(animate);
     }
+    //recall animation loop
+    requestAnimationFrame(animate);
   }
+}
 
 
 
