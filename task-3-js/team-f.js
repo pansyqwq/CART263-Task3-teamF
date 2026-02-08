@@ -110,7 +110,7 @@ function setup_F() {
       // remove the point after 1 second to create a fading trail
       setTimeout(() => {
         pointDiv.remove();
-      }, 1000);
+      }, 800);
     }
   }
 
