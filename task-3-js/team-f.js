@@ -77,6 +77,10 @@ function setup_F() {
 
     parentCanvas.addEventListener("mousemove", moveCallBack);
 
+    parentCanvas.addEventListener("click", () => {
+      parentCanvas.innerHTML = "";
+    });
+
     function moveCallBack(e) {
       let rect = this.getBoundingClientRect();
 
