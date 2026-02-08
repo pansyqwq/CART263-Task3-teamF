@@ -59,21 +59,63 @@ function setup_F() {
 
   function aniB(parentCanvas) {
     console.log("in ani-B -teamF");
+    let sampleColors = [
+      "red",
+      "purple",
+      "orange",
+      "magenta",
+      "black",
+      "white",
+      "green",
+      "yellow",
+      "pink",
+      "lime",
+      "maroon",
+      "teal",
+      "navy",
+      "olive",
+      "grey",
+      "fuchsia",
+    ];
+    parentCanvas.style.position = "relative";
 
-  }
-  window.onload = function () {
-    let drawBox = document.querySelector("#draw-box-a");
+    parentCanvas.addEventListener("mousemove", moveCallBack);
 
-    drawBox.addEventListener("click", clickCallBack);
-
-    function clickCallBack(e) {
+    function moveCallBack(e) {
       let rect = this.getBoundingClientRect();
 
       let offsetX = e.clientX - rect.x;
       let offsetY = e.clientY - rect.y;
 
+      const red = Math.round((offsetX / rect.width) * 255);
+      const blue = Math.round((offsetY / rect.height) * 255);
 
+      parentCanvas.style.background =
+        `linear-gradient(rgb(${red}, 100, ${blue}), rgb(255, 255, 255))`;
 
+      let pointDiv = document.createElement("div");
+      pointDiv.classList.add("point");
+
+      pointDiv.style.left = offsetX + "px";
+      pointDiv.style.top = offsetY + "px";
+
+      // pick a random color from the color list
+      let color =
+        sampleColors[Math.floor(Math.random() * sampleColors.length)];
+
+      pointDiv.style.background = color;
+
+      // give each point a slightly random size
+      let size = 4 + Math.random() * 8;
+      pointDiv.style.width = size + "px";
+      pointDiv.style.height = size + "px";
+
+      this.appendChild(pointDiv);
+
+      // remove the point after 1 second to create a fading trail
+      setTimeout(() => {
+        pointDiv.remove();
+      }, 1000);
     }
   }
 
