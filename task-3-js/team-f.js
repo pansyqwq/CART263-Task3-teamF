@@ -61,10 +61,6 @@ function setup_F() {
     console.log("in ani-B -teamF");
     let sampleColors = [
       "red",
-      "purple",
-      "orange",
-      "magenta",
-      "black",
       "white",
       "green",
       "yellow",
@@ -89,7 +85,6 @@ function setup_F() {
 
       const red = Math.round((offsetX / rect.width) * 255);
       const blue = Math.round((offsetY / rect.height) * 255);
-
       parentCanvas.style.background =
         `linear-gradient(rgb(${red}, 100, ${blue}), rgb(255, 255, 255))`;
 
