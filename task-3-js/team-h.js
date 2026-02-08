@@ -32,7 +32,7 @@ function setup_H() {
 
     let numClicks = 0; // for number of clicks
     // let aniRef = null;
-    let circles = []; //empty array of circles
+    let circles = []; // empty array of circles
     // let aniSpeed = 1;
 
     //call to setup the animation before running
@@ -233,7 +233,7 @@ function setup_H() {
    * Do not change any code above or the HTML markup.
    * **/
 
-  function aniD(parentCanvas) {
+  function aniD(parentCanvas) { // aniD has access to this parentCanvas variable
     console.log("in aniD -teamH");
 
     let sampleColors = [
@@ -255,16 +255,16 @@ function setup_H() {
     ];
 
     //get the rendered bounding Box of parent and use the width and height
-    let boundingBoxParent = parentCanvas.getBoundingClientRect();
+    let boundingBoxParent = parentCanvas.getBoundingClientRect(); 
     let arrayOfellipses = [];
 
     //make a grid of cells
     for (let i = 20; i < boundingBoxParent.width; i += 20) {
       for (let j = 20; j < boundingBoxParent.height; j += 20) {
         //create a div and place in the grid
-        let ellipse = document.createElement("div");
-        ellipse.classList.add("TEAM_H_h_cell_D");
-        parentCanvas.appendChild(ellipse);
+        let ellipse = document.createElement("div");// adding a new div in the document, the variable ellipse
+        ellipse.classList.add("TEAM_H_h_cell_D");// adding a class to this div, so we can manage them 
+        parentCanvas.appendChild(ellipse); //putting the element on the page 
         ellipse.style.left = `${j}px`;
         ellipse.style.top = `${i}px`;
         ellipse.style.width = "10px";
