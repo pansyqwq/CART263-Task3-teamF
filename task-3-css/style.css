@@ -181,3 +181,11 @@ h5 {
     opacity: 0;
   }
 }
+
+.square {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 3px;
+  color: gray;
+}

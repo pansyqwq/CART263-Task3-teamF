@@ -3,8 +3,6 @@
 //Weini: C
 //Xueyi: B
 
-
-
 setup_F();
 /** THEME: JOY  */
 function setup_F() {
@@ -38,15 +36,22 @@ function setup_F() {
     parentCanvas.appendChild(button);
 
     let squares = [];
-  }
 
+    for (let i = 0; i < 7; i++) {
+      let square = document.createElement("div");
+      square.classList.add("square");
+
+      parentCanvas.appendChild(square);
+      squares.push(square);
+    }
+  }
 
   /****************ANI B ************************************ */
   /** PUT ALL YOUR CODE FOR INTERACTIVE PATTERN B INSIDE HERE */
   /****************ANI B ************************************ */
   /**************** TASK *******************************************
    * YOU CAN USE ALL NOTES --- and see my examples in team-h.js for inspiration and possibly help:).
-   * 1: create a creative, visual pattern using text, divs as shapes, images ... 
+   * 1: create a creative, visual pattern using text, divs as shapes, images ...
    * 2: add in mouseover event listener(s) somewhere to make the sketch interactive
    *
    * NOTE::: PLEASE::: if you add any custom css PLEASE use the style.css and prefix any class names with your team label
@@ -89,8 +94,7 @@ function setup_F() {
 
       const red = Math.round((offsetX / rect.width) * 255);
       const blue = Math.round((offsetY / rect.height) * 255);
-      parentCanvas.style.background =
-        `linear-gradient(rgb(${red}, 100, ${blue}), rgb(255, 255, 255))`;
+      parentCanvas.style.background = `linear-gradient(rgb(${red}, 100, ${blue}), rgb(255, 255, 255))`;
 
       let pointDiv = document.createElement("div");
       pointDiv.classList.add("point");
@@ -99,8 +103,7 @@ function setup_F() {
       pointDiv.style.top = offsetY + "px";
 
       // pick a random color from the color list
-      let color =
-        sampleColors[Math.floor(Math.random() * sampleColors.length)];
+      let color = sampleColors[Math.floor(Math.random() * sampleColors.length)];
 
       pointDiv.style.background = color;
 
@@ -125,7 +128,7 @@ function setup_F() {
    * YOU CAN USE ALL NOTES --- and see my examples in team-h.js for inspiration and possibly help:)
    * 1: use the PROVIDED keyup/down callbacks `windowKeyDownRef` and/or `windowKeyUpnRef` to handle keyboard events
    * 2: create an interactive pattern/sketch based on keyboard input. Anything goes.
-   * 
+   *
    * NOTE::: PLEASE::: if you add any custom css PLEASE use the style.css and prefix any class names with your team label
    * i.e. you want to create a custom div class and you are in "Team_A" then call your class TEAM_A_ANI_A_Div -
    * this is so that your styles are not overriden by other teams.
@@ -215,12 +218,13 @@ function setup_F() {
       ellipse.setAttribute("ani-dir", "1");
       ellipse.setAttribute("ani-go", "false");
       arrayOfellipses.push(ellipse);
-      setTimeout(function () { ellipse.setAttribute("ani-go", "true") }, Math.random() * 5000)
+      setTimeout(function () {
+        ellipse.setAttribute("ani-go", "true");
+      }, Math.random() * 5000);
     }
   }
 
-  requestAnimationFrame(animate)
-
+  requestAnimationFrame(animate);
 
   /****** callback for requestAnimationFrame **********/
   function animate() {
@@ -243,6 +247,3 @@ function setup_F() {
     requestAnimationFrame(animate);
   }
 }
-
-
-
