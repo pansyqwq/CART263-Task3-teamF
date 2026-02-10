@@ -246,23 +246,23 @@ function setup_F() {
     for (let i = 20; i < boundingBoxParent.width; i += 20) { //x axis
       for (let j = 20; j < boundingBoxParent.height; j += 20) {//y axis
         //create a div and place in the grid
-        let ellipse = document.createElement("div");
+        let ellipse = document.createElement("div");// this is a DOM object in memory
         ellipse.classList.add("TEAM_H_h_cell_D");// adding a class to this div
         parentCanvas.appendChild(ellipse);// put ellipse as the child into the parentCanvas
-        ellipse.style.left = `${j}px`;
+        ellipse.style.left = `${j}px`;//getting the position of the ellipse
         ellipse.style.top = `${i}px`;
         ellipse.style.width = "10px";
         ellipse.style.height = "10px";
         ellipse.style.opacity = 1;
         ellipse.style.background =
-          sampleColors[parseInt(Math.random() * sampleColors.length)];
-        ellipse.setAttribute("ani-dir", "1");
-        ellipse.setAttribute("ani-go", "false");
-        arrayOfellipses.push(ellipse);
+          sampleColors[parseInt(Math.random() * sampleColors.length)];// math.random gives a random real number between 0-1
+        ellipse.setAttribute("ani-dir", "1");// using set Attribute to control the animation 1 means bigger 
+        ellipse.setAttribute("ani-go", "false");// animation playing? the defalt is false
+        arrayOfellipses.push(ellipse);//Put this newly created ellipse div into the arrayOfellipses list
         setTimeout(function () {
-          ellipse.setAttribute("ani-go", "true");
-        }, Math.random() * 5000);
-      }
+          ellipse.setAttribute("ani-go", "true"); // making the anination true
+        }, Math.random() * 5000);//Math.random() * 5000：randomise from 0 to 5000ms
+      }// so each ellipse will start animation after a random period of time
     }
 
     requestAnimationFrame(animate);
