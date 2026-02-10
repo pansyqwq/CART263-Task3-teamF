@@ -37,12 +37,55 @@ function setup_F() {
 
     let squares = [];
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 154; i++) {
       let square = document.createElement("div");
       square.classList.add("square");
 
       parentCanvas.appendChild(square);
       squares.push(square);
+    }
+
+    button.addEventListener("click", () => {
+      direction *= -1;
+    });
+
+    let currentIndex = 0;
+    let direction = 1;
+
+    setInterval(() => {
+      squares.forEach((squares) => {
+        squares.style.backgroundColor = "gray";
+      });
+      squares[currentIndex].style.backgroundColor = getRandomColour();
+      currentIndex += direction;
+
+      if (currentIndex >= squares.length) {
+        currentIndex = 0;
+      }
+
+      if (currentIndex < 0) {
+        currentIndex = squares.length - 1;
+      }
+    }, 30);
+
+    function getRandomColour() {
+      let squareColors = [
+        "red",
+        "white",
+        "green",
+        "yellow",
+        "pink",
+        "lime",
+        "maroon",
+        "teal",
+        "navy",
+        "olive",
+        "grey",
+        "fuchsia",
+      ];
+
+      let randomIndex = Math.floor(Math.random() * squareColors.length);
+      return squareColors[randomIndex];
     }
   }
 
