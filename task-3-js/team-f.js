@@ -246,7 +246,7 @@ function setup_F() {
     for (let i = 20; i < boundingBoxParent.width; i += 20) { //x axis
       for (let j = 20; j < boundingBoxParent.height; j += 20) {//y axis
         //create a div and place in the grid
-        let ellipse = document.createElement("div");// this is a DOM object in memory
+        let ellipse = document.createElement("div");// this is a DOM object in memory, a div is always a rectangle by default
         ellipse.classList.add("TEAM_H_h_cell_D");// adding a class to this div
         parentCanvas.appendChild(ellipse);// put ellipse as the child into the parentCanvas
         ellipse.style.left = `${j}px`;//getting the position of the ellipse
@@ -268,24 +268,25 @@ function setup_F() {
     requestAnimationFrame(animate);
 
     /****** callback for requestAnimationFrame **********/
-    function animate() {
-      for (let i = 0; i < arrayOfellipses.length; i++) {
-        if (arrayOfellipses[i].getAttribute("ani-go") === "true") {
-          let dir_of_ani = parseInt(arrayOfellipses[i].getAttribute("ani-dir"));
-          let currentSize = parseInt(arrayOfellipses[i].style.width);
+    function animate() { // update every frame
+      for (let i = 0; i < arrayOfellipses.length; i++) {// from 0 to the last number
+        if (arrayOfellipses[i].getAttribute("ani-go") === "true") {// if true
+          let dir_of_ani = parseInt(arrayOfellipses[i].getAttribute("ani-dir")); // parseInt only returns the number
+          let currentSize = parseInt(arrayOfellipses[i].style.width);// return the width by int
           //console.log(currentSize)
           if (currentSize > 25 || currentSize < 2) {
-            dir_of_ani *= -1;
-            arrayOfellipses[i].setAttribute("ani-dir", dir_of_ani);
+            dir_of_ani *= -1; // controling if the circle is getting bigger or smaller. 
+            arrayOfellipses[i].setAttribute("ani-dir", dir_of_ani);// apply the new direction, allowing the ellipse to get back and forth between 25px and 2 px
           }
           arrayOfellipses[i].style.width = currentSize + 1 * dir_of_ani + "px";
           arrayOfellipses[i].style.height = currentSize + 1 * dir_of_ani + "px";
-          arrayOfellipses[i].style.borderRadius =
+          arrayOfellipses[i].style.borderRadius = // use border Radius to make it a circle
             currentSize + 1 * dir_of_ani + "px";
         }
       }
       //recall animation loop
-      requestAnimationFrame(animate);
+      requestAnimationFrame(animate);// getting the next frame
     }
+    
   }
 }
