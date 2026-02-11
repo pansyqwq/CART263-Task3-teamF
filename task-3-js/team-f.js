@@ -3,8 +3,6 @@
 //Weini: C
 //Xueyi: B
 
-
-
 setup_F();
 /** THEME: JOY  */
 function setup_F() {
@@ -38,15 +36,65 @@ function setup_F() {
     parentCanvas.appendChild(button);
 
     let squares = [];
-  }
 
+    for (let i = 0; i < 154; i++) {
+      let square = document.createElement("div");
+      square.classList.add("square");
+
+      parentCanvas.appendChild(square);
+      squares.push(square);
+    }
+
+    button.addEventListener("click", () => {
+      direction *= -1;
+    });
+
+    let currentIndex = 0;
+    let direction = 1;
+
+    setInterval(() => {
+      squares.forEach((squares) => {
+        squares.style.backgroundColor = "gray";
+      });
+      squares[currentIndex].style.backgroundColor = getRandomColour();
+      currentIndex += direction;
+
+      if (currentIndex >= squares.length) {
+        currentIndex = 0;
+      }
+
+      if (currentIndex < 0) {
+        currentIndex = squares.length - 1;
+      }
+    }, 30);
+
+    function getRandomColour() {
+      let squareColors = [
+        "red",
+        "white",
+        "green",
+        "yellow",
+        "pink",
+        "lime",
+        "maroon",
+        "teal",
+        "navy",
+        "olive",
+        "grey",
+        "fuchsia",
+      ];
+
+      let randomIndex = Math.floor(Math.random() * squareColors.length);
+      return squareColors[randomIndex];
+    }
+  }
 
   /****************ANI B ************************************ */
   /** PUT ALL YOUR CODE FOR INTERACTIVE PATTERN B INSIDE HERE */
   /****************ANI B ************************************ */
   /**************** TASK *******************************************
    * YOU CAN USE ALL NOTES --- and see my examples in team-h.js for inspiration and possibly help:).
-   * 1: create a creative, visual pattern using text, divs as shapes, images ... 
+   * 1: create a creative, visual pattern using text, divs as shapes, images ...
    * 2: add in mouseover event listener(s) somewhere to make the sketch interactive
    *
    * NOTE::: PLEASE::: if you add any custom css PLEASE use the style.css and prefix any class names with your team label
@@ -89,8 +137,7 @@ function setup_F() {
 
       const red = Math.round((offsetX / rect.width) * 255);
       const blue = Math.round((offsetY / rect.height) * 255);
-      parentCanvas.style.background =
-        `linear-gradient(rgb(${red}, 100, ${blue}), rgb(255, 255, 255))`;
+      parentCanvas.style.background = `linear-gradient(rgb(${red}, 100, ${blue}), rgb(255, 255, 255))`;
 
       let pointDiv = document.createElement("div");
       pointDiv.classList.add("point");
@@ -99,8 +146,7 @@ function setup_F() {
       pointDiv.style.top = offsetY + "px";
 
       // pick a random color from the color list
-      let color =
-        sampleColors[Math.floor(Math.random() * sampleColors.length)];
+      let color = sampleColors[Math.floor(Math.random() * sampleColors.length)];
 
       pointDiv.style.background = color;
 
@@ -125,7 +171,7 @@ function setup_F() {
    * YOU CAN USE ALL NOTES --- and see my examples in team-h.js for inspiration and possibly help:)
    * 1: use the PROVIDED keyup/down callbacks `windowKeyDownRef` and/or `windowKeyUpnRef` to handle keyboard events
    * 2: create an interactive pattern/sketch based on keyboard input. Anything goes.
-   * 
+   *
    * NOTE::: PLEASE::: if you add any custom css PLEASE use the style.css and prefix any class names with your team label
    * i.e. you want to create a custom div class and you are in "Team_A" then call your class TEAM_A_ANI_A_Div -
    * this is so that your styles are not overriden by other teams.
@@ -172,9 +218,6 @@ function setup_F() {
    * remember you can define other functions inside....
    * Do not change any code above or the HTML markup.
    * **/
-  function aniD(parentCanvas) {
-    console.log("in ani-D -teamF");
-  }
 
   let sampleColors = [
     "red",
@@ -194,55 +237,55 @@ function setup_F() {
     "fuchsia",
   ];
 
-  //get the rendered bounding Box of parent and use the width and height
-  let boundingBoxParent = parentCanvas.getBoundingClientRect();
-  let arrayOfellipses = [];
-
-  //make a grid of cells
-  for (let i = 20; i < boundingBoxParent.width; i += 20) {
-    for (let j = 20; j < boundingBoxParent.height; j += 20) {
-      //create a div and place in the grid
-      let ellipse = document.createElement("div");
-      ellipse.classList.add("TEAM_H_h_cell_D");
-      parentCanvas.appendChild(ellipse);
-      ellipse.style.left = `${j}px`;
-      ellipse.style.top = `${i}px`;
-      ellipse.style.width = "10px";
-      ellipse.style.height = "10px";
-      ellipse.style.opacity = 1;
-      ellipse.style.background =
-        sampleColors[parseInt(Math.random() * sampleColors.length)];
-      ellipse.setAttribute("ani-dir", "1");
-      ellipse.setAttribute("ani-go", "false");
-      arrayOfellipses.push(ellipse);
-      setTimeout(function () { ellipse.setAttribute("ani-go", "true") }, Math.random() * 5000)
+  function aniD(parentCanvas) {
+    //get the rendered bounding Box of parent and use the width and height
+    let boundingBoxParent = parentCanvas.getBoundingClientRect();
+    let arrayOfellipses = [];// array to put all the ellipeses
+    console.log("in ani-D -teamF");
+    //make a grid of cells
+    for (let i = 20; i < boundingBoxParent.width; i += 20) { //x axis
+      for (let j = 20; j < boundingBoxParent.height; j += 20) {//y axis
+        //create a div and place in the grid
+        let ellipse = document.createElement("div");// this is a DOM object in memory
+        ellipse.classList.add("TEAM_H_h_cell_D");// adding a class to this div
+        parentCanvas.appendChild(ellipse);// put ellipse as the child into the parentCanvas
+        ellipse.style.left = `${j}px`;//getting the position of the ellipse
+        ellipse.style.top = `${i}px`;
+        ellipse.style.width = "10px";
+        ellipse.style.height = "10px";
+        ellipse.style.opacity = 1;
+        ellipse.style.background =
+          sampleColors[parseInt(Math.random() * sampleColors.length)];// math.random gives a random real number between 0-1
+        ellipse.setAttribute("ani-dir", "1");// using set Attribute to control the animation 1 means bigger 
+        ellipse.setAttribute("ani-go", "false");// animation playing? the defalt is false
+        arrayOfellipses.push(ellipse);//Put this newly created ellipse div into the arrayOfellipses list
+        setTimeout(function () {
+          ellipse.setAttribute("ani-go", "true"); // making the anination true
+        }, Math.random() * 5000);//Math.random() * 5000：randomise from 0 to 5000ms
+      }// so each ellipse will start animation after a random period of time
     }
-  }
 
-  requestAnimationFrame(animate)
-
-
-  /****** callback for requestAnimationFrame **********/
-  function animate() {
-    for (let i = 0; i < arrayOfellipses.length; i++) {
-      if (arrayOfellipses[i].getAttribute("ani-go") === "true") {
-        let dir_of_ani = parseInt(arrayOfellipses[i].getAttribute("ani-dir"));
-        let currentSize = parseInt(arrayOfellipses[i].style.width);
-        //console.log(currentSize)
-        if (currentSize > 25 || currentSize < 2) {
-          dir_of_ani *= -1;
-          arrayOfellipses[i].setAttribute("ani-dir", dir_of_ani);
-        }
-        arrayOfellipses[i].style.width = currentSize + 1 * dir_of_ani + "px";
-        arrayOfellipses[i].style.height = currentSize + 1 * dir_of_ani + "px";
-        arrayOfellipses[i].style.borderRadius =
-          currentSize + 1 * dir_of_ani + "px";
-      }
-    }
-    //recall animation loop
     requestAnimationFrame(animate);
+
+    /****** callback for requestAnimationFrame **********/
+    function animate() {
+      for (let i = 0; i < arrayOfellipses.length; i++) {
+        if (arrayOfellipses[i].getAttribute("ani-go") === "true") {
+          let dir_of_ani = parseInt(arrayOfellipses[i].getAttribute("ani-dir"));
+          let currentSize = parseInt(arrayOfellipses[i].style.width);
+          //console.log(currentSize)
+          if (currentSize > 25 || currentSize < 2) {
+            dir_of_ani *= -1;
+            arrayOfellipses[i].setAttribute("ani-dir", dir_of_ani);
+          }
+          arrayOfellipses[i].style.width = currentSize + 1 * dir_of_ani + "px";
+          arrayOfellipses[i].style.height = currentSize + 1 * dir_of_ani + "px";
+          arrayOfellipses[i].style.borderRadius =
+            currentSize + 1 * dir_of_ani + "px";
+        }
+      }
+      //recall animation loop
+      requestAnimationFrame(animate);
+    }
   }
 }
-
-
-
