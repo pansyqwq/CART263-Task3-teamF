@@ -70,18 +70,18 @@ function setup_F() {
 
     function getRandomColour() {
       let squareColors = [
-        "red",
-        "white",
-        "green",
-        "yellow",
-        "pink",
-        "lime",
-        "maroon",
-        "teal",
-        "navy",
-        "olive",
-        "grey",
-        "fuchsia",
+        "lightpink",
+        "peachpuff",
+        "lemonchiffon",
+        "palegreen",
+        "paleturquoise",
+        "powderblue",
+        "lavender",
+        "thistle",
+        "mistyrose",
+        "lightcyan",
+        "honeydew",
+        "aliceblue",
       ];
 
       let randomIndex = Math.floor(Math.random() * squareColors.length);
@@ -276,62 +276,65 @@ function setup_F() {
     "#add8e6",
   ];
 
-    
-  function aniD(parentCanvas) {// get the rendered bounding box of parent and use the width and height
-  let boundingBoxParent = parentCanvas.getBoundingClientRect();
-  let arrayOfSquares = [];
-  console.log("in ani-D -teamF");
+  function aniD(parentCanvas) {
+    // get the rendered bounding box of parent and use the width and height
+    let boundingBoxParent = parentCanvas.getBoundingClientRect();
+    let arrayOfSquares = [];
+    console.log("in ani-D -teamF");
 
-  // make a grid of cells
-  for (let i = 20; i < boundingBoxParent.width; i += 40) {  // x axis
-    for (let j = 20; j < boundingBoxParent.height; j += 40) { // y axis
+    // make a grid of cells
+    for (let i = 20; i < boundingBoxParent.width; i += 40) {
+      // x axis
+      for (let j = 20; j < boundingBoxParent.height; j += 40) {
+        // y axis
 
-      // create a div and place in the grid
-      let square = document.createElement("div");
-      square.classList.add("TEAM_H_h_cell_D");
-      parentCanvas.appendChild(square);
+        // create a div and place in the grid
+        let square = document.createElement("div");
+        square.classList.add("TEAM_H_h_cell_D");
+        parentCanvas.appendChild(square);
 
-      square.style.left = `${j}px`;
-      square.style.top = `${i}px`;
-      square.style.width = "12px";
-      square.style.height = "12px";
-      square.style.borderRadius = "0px";
-      square.style.opacity = 1;
+        square.style.left = `${j}px`;
+        square.style.top = `${i}px`;
+        square.style.width = "12px";
+        square.style.height = "12px";
+        square.style.borderRadius = "0px";
+        square.style.opacity = 1;
 
-      square.style.background =
-        sampleColors[Math.floor(Math.random() * sampleColors.length)];
+        square.style.background =
+          sampleColors[Math.floor(Math.random() * sampleColors.length)];
 
-      //When you rotate this element, rotate it around its center point.
-      square.style.transformOrigin = "center center";
+        //When you rotate this element, rotate it around its center point.
+        square.style.transformOrigin = "center center";
 
-      //the defalt state of animation of false
-      square.setAttribute("ani-go", "false");
-      arrayOfSquares.push(square);
+        //the defalt state of animation of false
+        square.setAttribute("ani-go", "false");
+        arrayOfSquares.push(square);
 
-      // random start time (0 - 5000ms)
-      setTimeout(() => {
-        square.setAttribute("ani-go", "true");
-        startRotationLoop(square);// we are linking the data of spin to square
-      }, Math.random() * 5000);
+        // random start time (0 - 5000ms)
+        setTimeout(() => {
+          square.setAttribute("ani-go", "true");
+          startRotationLoop(square); // we are linking the data of spin to square
+        }, Math.random() * 5000);
+      }
     }
-  }
 
-  function rotateOnce(spin) { //spin is a DOM element different than square, it stores spin data
-    // random integer 0-360
-    let angle = Math.floor(Math.random() * 361);
-    spin.style.transform = `rotate(${angle}deg)`;
-  }
+    function rotateOnce(spin) {
+      //spin is a DOM element different than square, it stores spin data
+      // random integer 0-360
+      let angle = Math.floor(Math.random() * 361);
+      spin.style.transform = `rotate(${angle}deg)`;
+    }
 
     // rotate to a new random angle every 2 seconds
-  function startRotationLoop(spin) {
-    // start the rotation once immediately
-    rotateOnce(spin );
-
-    setInterval(() => {
+    function startRotationLoop(spin) {
+      // start the rotation once immediately
       rotateOnce(spin);
-    }, 2000); // run this function again and again every 2 sec
+
+      setInterval(() => {
+        rotateOnce(spin);
+      }, 2000); // run this function again and again every 2 sec
+    }
   }
-}
 
   // function aniD(parentCanvas) {
   //   //get the rendered bounding Box of parent and use the width and height
@@ -353,7 +356,7 @@ function setup_F() {
   //       ellipse.style.opacity = 1;
   //       ellipse.style.background =
   //         sampleColors[parseInt(Math.random() * sampleColors.length)];// math.random gives a random real number between 0-1
-  //       ellipse.setAttribute("ani-dir", "1");// using set Attribute to control the animation 1 means bigger 
+  //       ellipse.setAttribute("ani-dir", "1");// using set Attribute to control the animation 1 means bigger
   //       ellipse.setAttribute("ani-go", "false");// animation playing? the defalt is false
   //       arrayOfellipses.push(ellipse);//Put this newly created ellipse div into the arrayOfellipses list
   //       setTimeout(function () {
@@ -372,7 +375,7 @@ function setup_F() {
   //         let currentSize = parseInt(arrayOfellipses[i].style.width);// return the width by int
   //         //console.log(currentSize)
   //         if (currentSize > 25 || currentSize < 2) {
-  //           dir_of_ani *= -1; // controling if the circle is getting bigger or smaller. 
+  //           dir_of_ani *= -1; // controling if the circle is getting bigger or smaller.
   //           arrayOfellipses[i].setAttribute("ani-dir", dir_of_ani);// apply the new direction, allowing the ellipse to get back and forth between 25px and 2 px
   //         }
   //         arrayOfellipses[i].style.width = currentSize + 1 * dir_of_ani + "px";
@@ -386,6 +389,4 @@ function setup_F() {
   //   }
 
   // }
-
-
 }
