@@ -220,21 +220,21 @@ function setup_F() {
    * **/
 
   let sampleColors = [
-    "red",
-    "purple",
-    "orange",
-    "magenta",
-    "black",
-    "green",
-    "yellow",
-    "pink",
-    "lime",
-    "maroon",
-    "teal",
-    "navy",
-    "olive",
-    "grey",
-    "fuchsia",
+    "#ffffff",
+    "#eaeaeaff",
+    "#c8c8c8ff",
+    "#b1b1b1ff",
+    "#a0a0a0ff",
+    "#939292ff",
+    "#8c8c8cff",
+    "#777777ff",
+    "#666666ff",
+    "#5e5e5eff",
+    "#505050ff",
+    "#414141ff",
+    "#343434ff",
+    "#000000ff",
+    "#add8e6",
   ];
 
   function aniD(parentCanvas) {
