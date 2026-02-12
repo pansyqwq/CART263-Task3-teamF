@@ -281,7 +281,7 @@ function setup_F() {
           arrayOfellipses[i].style.width = currentSize + 1 * dir_of_ani + "px";
           arrayOfellipses[i].style.height = currentSize + 1 * dir_of_ani + "px";
           arrayOfellipses[i].style.borderRadius = // use border Radius to make it a circle
-            currentSize + 1 * dir_of_ani + "px";
+            "0px";
         }
       }
       //recall animation loop
