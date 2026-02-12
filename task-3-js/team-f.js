@@ -259,21 +259,21 @@ function setup_F() {
    * **/
 
   let sampleColors = [
-    "red",
-    "purple",
-    "orange",
-    "magenta",
-    "black",
-    "green",
-    "yellow",
-    "pink",
-    "lime",
-    "maroon",
-    "teal",
-    "navy",
-    "olive",
-    "grey",
-    "fuchsia",
+    "#f5f5f5ff",
+    "#eaeaeaff",
+    "#c8c8c8ff",
+    "#b1b1b1ff",
+    "#a0a0a0ff",
+    "#939292ff",
+    "#8c8c8cff",
+    "#777777ff",
+    "#666666ff",
+    "#5e5e5eff",
+    "#505050ff",
+    "#414141ff",
+    "#343434ff",
+    "#000000ff",
+    "#add8e6",
   ];
 
   function aniD(parentCanvas) {
@@ -282,8 +282,8 @@ function setup_F() {
     let arrayOfellipses = [];// array to put all the ellipeses
     console.log("in ani-D -teamF");
     //make a grid of cells
-    for (let i = 20; i < boundingBoxParent.width; i += 20) { //x axis
-      for (let j = 20; j < boundingBoxParent.height; j += 20) {//y axis
+    for (let i = 20; i < boundingBoxParent.width; i += 40) { //x axis
+      for (let j = 20; j < boundingBoxParent.height; j += 40) {//y axis
         //create a div and place in the grid
         let ellipse = document.createElement("div");// this is a DOM object in memory, a div is always a rectangle by default
         ellipse.classList.add("TEAM_H_h_cell_D");// adding a class to this div
@@ -320,7 +320,7 @@ function setup_F() {
           arrayOfellipses[i].style.width = currentSize + 1 * dir_of_ani + "px";
           arrayOfellipses[i].style.height = currentSize + 1 * dir_of_ani + "px";
           arrayOfellipses[i].style.borderRadius = // use border Radius to make it a circle
-            currentSize + 1 * dir_of_ani + "px";
+            "0px";
         }
       }
       //recall animation loop
