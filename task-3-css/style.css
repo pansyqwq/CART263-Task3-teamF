@@ -169,15 +169,15 @@ h5 {
 
 /* Team F Css */
 
-.TEAM_F_point {
+.point {
   position: absolute;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   opacity: 1;
-  animation: TEAM_F_fadeOut 0.8s linear forwards;
+  animation: fadeOut 0.8 linear forwards;
 }
 
-@keyframes TEAM_F_fadeOut {
+@keyframes fadeOut {
   to {
     opacity: 0;
   }
