@@ -187,18 +187,57 @@ function setup_F() {
   function aniC(parentCanvas) {
     console.log("in ani-C -teamF");
 
+    parentCanvas.style.backgroundColor = "rgba(253, 189, 189, 1)";
+    parentCanvas.style.position = "relative";
+    parentCanvas.style.overflow = "hidden";
+
+    let emojiEl = parentCanvas.querySelector(".TEAM_F_emoji");
+    emojiEl = document.createElement("div");
+    emojiEl.classList.add("TEAM_F_emoji");
+    parentCanvas.appendChild(emojiEl);
+
+    let emojiIntro = document.createElement("div");
+    emojiIntro.classList.add("TEAM_F_text");
+    emojiIntro.textContent = "press C to change the mood";
+    parentCanvas.appendChild(emojiIntro);
+
+    const emojis = ["🙂", "😄", "😰", "😤", "😢"];
+    let index = 0;
+    emojiEl.textContent = emojis[index];
+
+    let cycling = false;
+    let lastSwitchTime = 0;
+    const intervalMs = 120;
+
+    function animate(timestamp) {
+      if (cycling) {
+        if (timestamp - lastSwitchTime > intervalMs) {
+          index = (index + 1) % emojis.length;
+          emojiEl.textContent = emojis[index];
+          lastSwitchTime = timestamp;
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+
     /*** THIS IS THE CALLBACK FOR KEY DOWN (* DO NOT CHANGE THE NAME *..) */
     windowKeyDownRef = function (e) {
       //code for key down in here
       console.log(e);
-      console.log("f-down");
+      if (e.key && e.key.toLowerCase() === "c") {
+        cycling = true;
+      }
     };
 
     /*** THIS IS THE CALLBACK FOR KEY UP (*DO NOT CHANGE THE NAME..) */
     windowKeyUpRef = function (e) {
       console.log(e);
-      console.log("f-up");
+      if (e.key && e.key.toLowerCase() === "c") {
+        cycling = false;
+      }
     };
+
     //DO NOT REMOVE
     window.addEventListener("keydown", windowKeyDownRef);
     window.addEventListener("keyup", windowKeyUpRef);
@@ -287,6 +326,6 @@ function setup_F() {
       //recall animation loop
       requestAnimationFrame(animate);// getting the next frame
     }
-    
+
   }
 }

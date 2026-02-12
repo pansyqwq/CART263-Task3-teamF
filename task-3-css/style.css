@@ -191,3 +191,25 @@ h5 {
   transform: translate(0, 250%);
   background-color: gray;
 }
+
+.TEAM_F_emoji {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 120px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.TEAM_F_text {
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 15px;
+  width: 100%;
+  pointer-events: none;
+  color: rgb(139, 138, 138);
+}
