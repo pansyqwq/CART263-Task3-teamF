@@ -220,7 +220,7 @@ function setup_F() {
    * **/
 
   let sampleColors = [
-    "#ffffff",
+    "#f5f5f5ff",
     "#eaeaeaff",
     "#c8c8c8ff",
     "#b1b1b1ff",
@@ -243,8 +243,8 @@ function setup_F() {
     let arrayOfellipses = [];// array to put all the ellipeses
     console.log("in ani-D -teamF");
     //make a grid of cells
-    for (let i = 20; i < boundingBoxParent.width; i += 20) { //x axis
-      for (let j = 20; j < boundingBoxParent.height; j += 20) {//y axis
+    for (let i = 20; i < boundingBoxParent.width; i += 40) { //x axis
+      for (let j = 20; j < boundingBoxParent.height; j += 40) {//y axis
         //create a div and place in the grid
         let ellipse = document.createElement("div");// this is a DOM object in memory, a div is always a rectangle by default
         ellipse.classList.add("TEAM_H_h_cell_D");// adding a class to this div
