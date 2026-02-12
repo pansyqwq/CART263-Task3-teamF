@@ -59,6 +59,7 @@ function setup_F() {
 
   function aniB(parentCanvas) {
     console.log("in ani-B -teamF");
+    let lastTime = 0;
     let sampleColors = [
       "red",
       "white",
@@ -232,7 +233,7 @@ function setup_F() {
     "#add8e6",
   ];
 
-<<<<<<< HEAD
+
   //get the rendered bounding Box of parent and use the width and height
   let boundingBoxParent = parentCanvas.getBoundingClientRect();
   let arrayOfellipses = [];
@@ -281,63 +282,63 @@ function setup_F() {
     //recall animation loop
     requestAnimationFrame(animate);
   }
-=======
-    
+
+
   function aniD(parentCanvas) {// get the rendered bounding box of parent and use the width and height
-  let boundingBoxParent = parentCanvas.getBoundingClientRect();
-  let arrayOfSquares = [];
-  console.log("in ani-D -teamF");
+    let boundingBoxParent = parentCanvas.getBoundingClientRect();
+    let arrayOfSquares = [];
+    console.log("in ani-D -teamF");
 
-  // make a grid of cells
-  for (let i = 20; i < boundingBoxParent.width; i += 40) {  // x axis
-    for (let j = 20; j < boundingBoxParent.height; j += 40) { // y axis
+    // make a grid of cells
+    for (let i = 20; i < boundingBoxParent.width; i += 40) {  // x axis
+      for (let j = 20; j < boundingBoxParent.height; j += 40) { // y axis
 
-      // create a div and place in the grid
-      let square = document.createElement("div");
-      square.classList.add("TEAM_H_h_cell_D");
-      parentCanvas.appendChild(square);
+        // create a div and place in the grid
+        let square = document.createElement("div");
+        square.classList.add("TEAM_H_h_cell_D");
+        parentCanvas.appendChild(square);
 
-      square.style.left = `${j}px`;
-      square.style.top = `${i}px`;
-      square.style.width = "12px";
-      square.style.height = "12px";
-      square.style.borderRadius = "0px";
-      square.style.opacity = 1;
+        square.style.left = `${j}px`;
+        square.style.top = `${i}px`;
+        square.style.width = "12px";
+        square.style.height = "12px";
+        square.style.borderRadius = "0px";
+        square.style.opacity = 1;
 
-      square.style.background =
-        sampleColors[Math.floor(Math.random() * sampleColors.length)];
+        square.style.background =
+          sampleColors[Math.floor(Math.random() * sampleColors.length)];
 
-      //When you rotate this element, rotate it around its center point.
-      square.style.transformOrigin = "center center";
+        //When you rotate this element, rotate it around its center point.
+        square.style.transformOrigin = "center center";
 
-      //the defalt state of animation of false
-      square.setAttribute("ani-go", "false");
-      arrayOfSquares.push(square);
+        //the defalt state of animation of false
+        square.setAttribute("ani-go", "false");
+        arrayOfSquares.push(square);
 
-      // random start time (0 - 5000ms)
-      setTimeout(() => {
-        square.setAttribute("ani-go", "true");
-        startRotationLoop(square);// we are linking the data of spin to square
-      }, Math.random() * 5000);
+        // random start time (0 - 5000ms)
+        setTimeout(() => {
+          square.setAttribute("ani-go", "true");
+          startRotationLoop(square);// we are linking the data of spin to square
+        }, Math.random() * 5000);
+      }
     }
-  }
 
-  function rotateOnce(spin) { //spin is a DOM element different than square, it stores spin data
-    // random integer 0-360
-    let angle = Math.floor(Math.random() * 361);
-    spin.style.transform = `rotate(${angle}deg)`;
-  }
+    function rotateOnce(spin) { //spin is a DOM element different than square, it stores spin data
+      // random integer 0-360
+      let angle = Math.floor(Math.random() * 361);
+      spin.style.transform = `rotate(${angle}deg)`;
+    }
 
     // rotate to a new random angle every 2 seconds
-  function startRotationLoop(spin) {
-    // start the rotation once immediately
-    rotateOnce(spin );
-
-    setInterval(() => {
+    function startRotationLoop(spin) {
+      // start the rotation once immediately
       rotateOnce(spin);
-    }, 2000); // run this function again and again every 2 sec
+
+      setInterval(() => {
+        rotateOnce(spin);
+      }, 2000); // run this function again and again every 2 sec
+    }
   }
-}
 
   // function aniD(parentCanvas) {
   //   //get the rendered bounding Box of parent and use the width and height
@@ -394,7 +395,7 @@ function setup_F() {
   // }
 
 
->>>>>>> 89bf53552f87cf3569e1879aecdbfcc3418468e7
+
 }
 
 
