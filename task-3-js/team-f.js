@@ -70,18 +70,18 @@ function setup_F() {
 
     function getRandomColour() {
       let squareColors = [
-        "lightpink",
-        "peachpuff",
-        "lemonchiffon",
-        "palegreen",
-        "paleturquoise",
-        "powderblue",
-        "lavender",
-        "thistle",
-        "mistyrose",
-        "lightcyan",
-        "honeydew",
-        "aliceblue",
+        "#ff00ff",
+        "#ff00cc",
+        "#cc00ff",
+        "#9900ff",
+        "#6600ff",
+        "#3300ff",
+        "#0033ff",
+        "#0066ff",
+        "#0099ff",
+        "#00ccff",
+        "#00ffff",
+        "#33ffff",
       ];
 
       let randomIndex = Math.floor(Math.random() * squareColors.length);
@@ -336,57 +336,62 @@ function setup_F() {
     }
   }
 
-  // function aniD(parentCanvas) {
-  //   //get the rendered bounding Box of parent and use the width and height
-  //   let boundingBoxParent = parentCanvas.getBoundingClientRect();
-  //   let arrayOfellipses = [];// array to put all the ellipeses
-  //   console.log("in ani-D -teamF");
-  //   //make a grid of cells
-  //   for (let i = 20; i < boundingBoxParent.width; i += 40) { //x axis
-  //     for (let j = 20; j < boundingBoxParent.height; j += 40) {//y axis
-  //       //create a div and place in the grid
-  //       let square = document.createElement("div");// this is a DOM object in memory, a div is always a rectangle by default
-  //       square.classList.add("TEAM_H_h_cell_D");// adding a class to this div
-  //       parentCanvas.appendChild(square);// put ellipse as the child into the parentCanvas
-  //       ellipse.style.left = `${j}px`;//getting the position of the ellipse
-  //       ellipse.style.top = `${i}px`;
-  //       ellipse.style.width = "15px";
-  //       ellipse.style.height = "15px";
-  //       ellipse.style.borderRadius = "0px";
-  //       ellipse.style.opacity = 1;
-  //       ellipse.style.background =
-  //         sampleColors[parseInt(Math.random() * sampleColors.length)];// math.random gives a random real number between 0-1
-  //       ellipse.setAttribute("ani-dir", "1");// using set Attribute to control the animation 1 means bigger
-  //       ellipse.setAttribute("ani-go", "false");// animation playing? the defalt is false
-  //       arrayOfellipses.push(ellipse);//Put this newly created ellipse div into the arrayOfellipses list
-  //       setTimeout(function () {
-  //         ellipse.setAttribute("ani-go", "true"); // making the anination true
-  //       }, Math.random() * 5000);//Math.random() * 5000：randomise from 0 to 5000ms
-  //     }// so each ellipse will start animation after a random period of time
-  //   }
+  function aniD(parentCanvas) {
+    //get the rendered bounding Box of parent and use the width and height
+    let boundingBoxParent = parentCanvas.getBoundingClientRect();
+    let arrayOfellipses = []; // array to put all the ellipeses
+    console.log("in ani-D -teamF");
+    //make a grid of cells
+    for (let i = 20; i < boundingBoxParent.width; i += 40) {
+      //x axis
+      for (let j = 20; j < boundingBoxParent.height; j += 40) {
+        //y axis
+        //create a div and place in the grid
+        let square = document.createElement("div"); // this is a DOM object in memory, a div is always a rectangle by default
+        square.classList.add("TEAM_H_h_cell_D"); // adding a class to this div
+        parentCanvas.appendChild(square); // put ellipse as the child into the parentCanvas
+        ellipse.style.left = `${j}px`; //getting the position of the ellipse
+        ellipse.style.top = `${i}px`;
+        ellipse.style.width = "15px";
+        ellipse.style.height = "15px";
+        ellipse.style.borderRadius = "0px";
+        ellipse.style.opacity = 1;
+        ellipse.style.background =
+          sampleColors[parseInt(Math.random() * sampleColors.length)]; // math.random gives a random real number between 0-1
+        ellipse.setAttribute("ani-dir", "1"); // using set Attribute to control the animation 1 means bigger
+        ellipse.setAttribute("ani-go", "false"); // animation playing? the defalt is false
+        arrayOfellipses.push(ellipse); //Put this newly created ellipse div into the arrayOfellipses list
+        setTimeout(function () {
+          ellipse.setAttribute("ani-go", "true"); // making the anination true
+        }, Math.random() * 5000); //Math.random() * 5000：randomise from 0 to 5000ms
+      } // so each ellipse will start animation after a random period of time
+    }
 
-  //   requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
 
-  //   /****** callback for requestAnimationFrame **********/
-  //   function animate() { // update every frame
-  //     for (let i = 0; i < arrayOfellipses.length; i++) {// from 0 to the last number
-  //       if (arrayOfellipses[i].getAttribute("ani-go") === "true") {// if true
-  //         let dir_of_ani = parseInt(arrayOfellipses[i].getAttribute("ani-dir")); // parseInt only returns the number
-  //         let currentSize = parseInt(arrayOfellipses[i].style.width);// return the width by int
-  //         //console.log(currentSize)
-  //         if (currentSize > 25 || currentSize < 2) {
-  //           dir_of_ani *= -1; // controling if the circle is getting bigger or smaller.
-  //           arrayOfellipses[i].setAttribute("ani-dir", dir_of_ani);// apply the new direction, allowing the ellipse to get back and forth between 25px and 2 px
-  //         }
-  //         arrayOfellipses[i].style.width = currentSize + 1 * dir_of_ani + "px";
-  //         arrayOfellipses[i].style.height = currentSize + 1 * dir_of_ani + "px";
-  //         arrayOfellipses[i].style.borderRadius = // use border Radius to make it a circle
-  //           "0px";
-  //       }
-  //     }
-  //     //recall animation loop
-  //     requestAnimationFrame(animate);// getting the next frame
-  //   }
+    /****** callback for requestAnimationFrame **********/
+    function animate() {
+      // update every frame
+      for (let i = 0; i < arrayOfellipses.length; i++) {
+        // from 0 to the last number
+        if (arrayOfellipses[i].getAttribute("ani-go") === "true") {
+          // if true
+          let dir_of_ani = parseInt(arrayOfellipses[i].getAttribute("ani-dir")); // parseInt only returns the number
+          let currentSize = parseInt(arrayOfellipses[i].style.width); // return the width by int
+          //console.log(currentSize)
+          if (currentSize > 25 || currentSize < 2) {
+            dir_of_ani *= -1; // controling if the circle is getting bigger or smaller.
+            arrayOfellipses[i].setAttribute("ani-dir", dir_of_ani); // apply the new direction, allowing the ellipse to get back and forth between 25px and 2 px
+          }
+          arrayOfellipses[i].style.width = currentSize + 1 * dir_of_ani + "px";
+          arrayOfellipses[i].style.height = currentSize + 1 * dir_of_ani + "px";
+          arrayOfellipses[i].style.borderRadius = "0px"; // use border Radius to make it a circle
+        }
+      }
+      //recall animation loop
+      requestAnimationFrame(animate); // getting the next frame
+    }
 
-  // }
+    // }
+  }
 }
