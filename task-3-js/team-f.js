@@ -59,7 +59,7 @@ function setup_F() {
 
   function aniB(parentCanvas) {
     console.log("in ani-B -teamF");
-    let lastTime = 0;
+
     let sampleColors = [
       "red",
       "white",
