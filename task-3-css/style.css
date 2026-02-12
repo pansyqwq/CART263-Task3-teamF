@@ -162,6 +162,7 @@ h5 {
 .TEAM_H_h_cell_D {
   position: absolute;
   border-radius: 10px;
+  transition: transform 0.4s ease;
   transform: translate(-50%, -50%);
 }
 
@@ -189,4 +190,26 @@ h5 {
   margin: 3px;
   transform: translate(0, 250%);
   background-color: gray;
+}
+
+.TEAM_F_emoji {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 120px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.TEAM_F_text {
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 15px;
+  width: 100%;
+  pointer-events: none;
+  color: rgb(139, 138, 138);
 }
